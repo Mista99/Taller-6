@@ -30,9 +30,22 @@ public class Festivo {
     private int diasPascua;
 
     @ManyToOne
-    @JoinColumn(name = "tipo_id")  // Especificar la columna de la clave foránea si es necesario
+    @JoinColumn(name = "IdTipo")  // Especificar la columna de la clave foránea si es necesario
     private Tipo tipo;
 
+    // Constructor con parámetros
+    public Festivo(String nombre, int dia, int mes, int diasPascua, Tipo tipo) {
+        this.nombre = nombre;
+        this.dia = dia;
+        this.mes = mes;
+        this.diasPascua = diasPascua;
+        this.tipo = tipo;
+    }
+
+    // Constructor vacío
+    public Festivo() {
+        // Constructor vacío por si es necesario crear un objeto vacío antes de la persistencia
+    }
 
     // Getters y setters
 
@@ -83,4 +96,5 @@ public class Festivo {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
+
 }

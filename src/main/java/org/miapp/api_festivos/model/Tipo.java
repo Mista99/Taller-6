@@ -1,23 +1,23 @@
 package org.miapp.api_festivos.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
 
 @Entity
 public class Tipo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Este es el equivalente a "SERIAL" en PostgreSQL
+    @Column(name = "Id", nullable = false)  // Especifica que esta columna no puede ser nula
     private Long id;
 
-    @Column(name = "tipo_festivo")  // Nombre exacto de la columna en la base de datos
+    @Column(name = "Tipo", nullable = false, length = 100)  // Especifica el nombre de la columna y su longitud
     private String tipo;
 
     // Getters y setters
-
     public Long getId() {
         return id;
     }
