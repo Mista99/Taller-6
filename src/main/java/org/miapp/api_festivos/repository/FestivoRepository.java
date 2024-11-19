@@ -1,7 +1,6 @@
 package org.miapp.api_festivos.repository;
 
 import org.miapp.api_festivos.model.Festivo;
-import org.miapp.api_festivos.model.Tipo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
