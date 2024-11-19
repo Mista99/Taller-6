@@ -24,10 +24,15 @@ public class ApiFestivosApplication {
     @PostConstruct
     public void init() {
         // Llamada al servicio para obtener los festivos de tipo 3
-        List<Festivo> festivos = festivoService.obtenerFestivosTipo3();
+        List<Festivo> festivos3 = festivoService.obtenerFestivosTipo3();
+        List<Festivo> festivos4 = festivoService.obtenerFestivosTipo4();
         // Imprimir cada festivo de la lista usando el método toString()
-        System.out.println("-------------------------prueba-------------------------");
-        for (Festivo festivo : festivos) {
+        System.out.println("-------------------------prueba festivos tipo 3-------------------------");
+        for (Festivo festivo : festivos3) {
+            System.out.println(festivo.toString());
+        }
+        System.out.println("-------------------------prueba festivos tipo 4-------------------------");
+        for (Festivo festivo : festivos4) {
             System.out.println(festivo.toString());
         }
     }

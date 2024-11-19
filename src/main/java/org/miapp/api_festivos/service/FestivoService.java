@@ -22,6 +22,9 @@ public class FestivoService {
     public List<Festivo> obtenerFestivosTipo3() {
         return festivoRepository.findByTipo_Id(3L);    
     }
+    public List<Festivo> obtenerFestivosTipo4() {
+        return festivoRepository.findByTipo_Id(4L);    
+    }
     
     public boolean esFestivo(int anio, int mes, int dia) {
         // Verificar los festivos fijos
