@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TipoRepository extends JpaRepository<Tipo, Long> {
     // Spring Data JPA generará la consulta automáticamente
-    Tipo findByTipo(String tipo);
+    Tipo findById(long id);
 }

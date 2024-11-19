@@ -21,23 +21,15 @@ public class ApiFestivosApplication {
         SpringApplication.run(ApiFestivosApplication.class, args);
     }
 
-    // @PostConstruct
-    // public void init() {
-    //     // Llamada al servicio para obtener los festivos de tipo 3 y 4
-    //     List<Festivo> festivos = festivoService.obtenerFestivosTipo3Y4();
-
-    //     // Comprobamos si la lista es null o vacía
-    //     if (festivos != null && !festivos.isEmpty()) {
-    //         // Imprimir cada festivo de la lista
-    //         for (Festivo festivo : festivos) {
-    //             System.out.println("ID: " + festivo.getId());
-    //             System.out.println("Fecha: " + festivo.getDiasPascua());
-    //             System.out.println("Tipo: " + festivo.getTipo());
-    //             System.out.println("--------------");
-    //         }
-    //     } else {
-    //         System.out.println("No se encontraron festivos de tipo 3 y 4.");
-    //     }
-    // }
+    @PostConstruct
+    public void init() {
+        // Llamada al servicio para obtener los festivos de tipo 3
+        List<Festivo> festivos = festivoService.obtenerFestivosTipo3();
+        // Imprimir cada festivo de la lista usando el método toString()
+        System.out.println("-------------------------prueba-------------------------");
+        for (Festivo festivo : festivos) {
+            System.out.println(festivo.toString());
+        }
+    }
 
 }

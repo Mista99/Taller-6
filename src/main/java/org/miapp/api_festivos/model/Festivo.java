@@ -1,37 +1,36 @@
 package org.miapp.api_festivos.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "\"Festivo\"")
+@Table(name = "Festivo")  // Mantener el nombre de la tabla en la base de datos
 public class Festivo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "Nombre")  // Nombre exacto de la columna en la base de datos
+    @Column(name = "Nombre")
     private String nombre;
 
-    @Column(name = "Dia")  // Nombre exacto de la columna en la base de datos
+    @Column(name = "Dia")
     private int dia;
 
-    @Column(name = "Mes")  // Nombre exacto de la columna en la base de datos
+    @Column(name = "Mes")
     private int mes;
 
-    @Column(name = "DiasPascua")  // Nombre exacto de la columna en la base de datos
+    @Column(name = "dias_pascua")
     private int diasPascua;
 
     @ManyToOne
-    @JoinColumn(name = "IdTipo")  // Especificar la columna de la clave foránea si es necesario
-    private Tipo tipo;
+    @JoinColumn(name = "Id_tipo", referencedColumnName = "Id")
+    private Tipo tipo;  // en lugar de id_tipo
+
+
+    // Constructor sin parámetros para JPA
+    public Festivo() {
+        
+    }
 
     // Constructor con parámetros
     public Festivo(String nombre, int dia, int mes, int diasPascua, Tipo tipo) {
@@ -42,13 +41,7 @@ public class Festivo {
         this.tipo = tipo;
     }
 
-    // Constructor vacío
-    public Festivo() {
-        // Constructor vacío por si es necesario crear un objeto vacío antes de la persistencia
-    }
-
     // Getters y setters
-
     public Long getId() {
         return id;
     }
@@ -97,4 +90,16 @@ public class Festivo {
         this.tipo = tipo;
     }
 
+    // Método toString para obtener una representación legible del objeto
+    @Override
+    public String toString() {
+        return "Festivo{" +
+               "id=" + id +
+               ", nombre='" + nombre + '\'' +
+               ", dia=" + dia +
+               ", mes=" + mes +
+               ", diasPascua=" + diasPascua +
+               ", tipo=" + tipo +
+               '}';
+    }
 }

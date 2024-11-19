@@ -15,7 +15,8 @@
     <description>Demo project for Spring Boot</description>
     <url/>
     <properties>
-        <java.version>17</java.version>
+        <!-- Actualizamos la versión de Java a 22 -->
+        <java.version>22</java.version>
     </properties>
     <dependencies>
         <!-- PostgreSQL JDBC Driver -->
@@ -23,13 +24,6 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.5.1</version> <!-- Utiliza la última versión disponible -->
-        </dependency>
-
-        <!-- Hibernate Core compatible con Jakarta Persistence -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>6.0.0.Final</version> <!-- Versión compatible con Jakarta -->
         </dependency>
 
         <!-- Spring Boot Starter Data JPA (ya incluye Hibernate y Jakarta Persistence) -->
@@ -71,6 +65,16 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- Plugin para asegurar que Maven compile con la versión de Java correcta -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version> <!-- La versión más reciente del plugin -->
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
