@@ -23,7 +23,6 @@ public class PascuaCalculator {
         // El Domingo de Pascua será 15 de marzo + días calculados
         LocalDate pascua = LocalDate.of(anio, 3, 15).plusDays(dias + 7); // +7 para el Domingo de Pascua
 
-        // Devolver la fecha del Domingo de Pascua
         return pascua;
     }
 }

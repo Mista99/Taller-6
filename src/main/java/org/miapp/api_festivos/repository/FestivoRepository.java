@@ -11,5 +11,4 @@ public interface FestivoRepository extends JpaRepository<Festivo, Long> {
     Optional<Festivo> findByDiaAndMes(int dia, int mes);
 
     List<Festivo> findByTipo_Id(Long tipoId);  // 'Tipo_Id' hace referencia a la columna 'id' de la tabla 'Tipo'
-    // List<Festivo> findByTipoIn(List<Integer> tipos);
 }

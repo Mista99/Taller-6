@@ -32,6 +32,8 @@ public class FestivoService {
     }
     public boolean esFestivo(int anio, int mes, int dia) {
         // Obtener los festivos de tipo 3 y tipo 4
+        List<Festivo> festivos1 = obtenerFestivosTipo1();  // Obtener los festivos de tipo 1 (constantes durante el año)
+        List<Festivo> festivos2 = obtenerFestivosTipo2();  // Obtener los festivos de tipo 2 (constantes durante el año)
         List<Festivo> festivos3 = obtenerFestivosTipo3();
         List<Festivo> festivos4 = obtenerFestivosTipo4();
         
@@ -42,7 +44,7 @@ public class FestivoService {
         for (Festivo festivo : festivos3) {
             LocalDate fechaPascuaConDias = pascua1.plusDays(festivo.getDiasPascua());
             
-            // Verificar si la fecha calculada de la Pascua con días adicionales coincide con el día, mes y año
+            // se compara la fecha calculada del festivo con la ingresada por el usuario
             if (fechaPascuaConDias.getYear() == anio && fechaPascuaConDias.getMonthValue() == mes && fechaPascuaConDias.getDayOfMonth() == dia) {
                 return true;
             }
@@ -52,14 +54,13 @@ public class FestivoService {
         for (Festivo festivo : festivos4) {
             LocalDate fechaPascuaConDias = pascua1.plusDays(festivo.getDiasPascua());
             
-            // Verificar si la fecha calculada de la Pascua con días adicionales coincide con el día, mes y año
+            // se compara la fecha calculada del festivo con la ingresada por el usuario
             if (fechaPascuaConDias.getYear() == anio && fechaPascuaConDias.getMonthValue() == mes && fechaPascuaConDias.getDayOfMonth() == dia) {
                 return true;
             }
         }
     
         // Verificar si algún festivo de tipo 1 coincide con el día y mes (son fijos durante todo el año)
-        List<Festivo> festivos1 = obtenerFestivosTipo1();  // Obtener los festivos de tipo 1 (constantes durante el año)
         for (Festivo festivo : festivos1) {
             if (festivo.getDia() == dia && festivo.getMes() == mes) {
                 return true;
@@ -67,13 +68,11 @@ public class FestivoService {
         }
     
         // Verificar si algún festivo de tipo 2 coincide con el día y mes (son fijos durante el año)
-        List<Festivo> festivos2 = obtenerFestivosTipo2();  // Obtener los festivos de tipo 2 (constantes durante el año)
         for (Festivo festivo : festivos2) {
             if (festivo.getDia() == dia && festivo.getMes() == mes) {
                 return true;
             }
         }
-    
         // Si no hay coincidencia, devolver falso
         return false;
     }

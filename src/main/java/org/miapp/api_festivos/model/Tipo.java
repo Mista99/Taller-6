@@ -5,17 +5,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "Tipo")
-@Access(AccessType.FIELD)
+@Access(AccessType.PROPERTY)
 public class Tipo {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)  // Hibernate elegirá la estrategia adecuada según la base de datos
+
     private Long id;
-
-    @Column(name = "Tipo")
     private String tipoName;
-
-    @OneToMany(mappedBy = "tipo")  // Relación con la clase Festivo, mapeando el campo 'tipo' en la clase Festivo
     private List<Festivo> festivos;
 
     // Constructor vacío necesario para JPA
@@ -29,6 +23,8 @@ public class Tipo {
     }
 
     // Getters y setters
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
@@ -37,6 +33,7 @@ public class Tipo {
         this.id = id;
     }
 
+    @Column(name = "Tipo")
     public String getTipoName() {
         return tipoName;
     }
@@ -44,7 +41,8 @@ public class Tipo {
     public void setTipoName(String tipoName) {
         this.tipoName = tipoName;
     }
-
+    //relacion desde la talba Tipo
+    @OneToMany(mappedBy = "tipo")
     public List<Festivo> getFestivos() {
         return festivos;
     }
@@ -53,12 +51,11 @@ public class Tipo {
         this.festivos = festivos;
     }
 
-    // Método toString para obtener una representación legible del objeto
     @Override
     public String toString() {
         return "Tipo{" +
                "id=" + id +
-               ", tipo='" + tipoName + '\'' +
+               ", tipoName='" + tipoName + '\'' +
                '}';
     }
 

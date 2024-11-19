@@ -2,46 +2,25 @@ package org.miapp.api_festivos.model;
 
 import jakarta.persistence.*;
 
+@Access(AccessType.PROPERTY)
 @Entity
-@Table(name = "Festivo")  // Mantener el nombre de la tabla en la base de datos
+@Table(name = "Festivo")
 public class Festivo {
 
+    private Long id;
+    private String nombre;
+    private int dia;
+    private int mes;
+    private int diasPascua;
+    private Tipo tipo;
+
+    public Festivo() {
+        // Constructor vacío necesario para JPA
+    }    
+
+    // Coloca la anotación @Id sobre el getter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(name = "Nombre")
-    private String nombre;
-
-    @Column(name = "Dia")
-    private int dia;
-
-    @Column(name = "Mes")
-    private int mes;
-
-    @Column(name = "dias_pascua")
-    private int diasPascua;
-
-    @ManyToOne
-    @JoinColumn(name = "Id_tipo", referencedColumnName = "Id")
-    private Tipo tipo;  // en lugar de id_tipo
-
-
-    // Constructor sin parámetros para JPA
-    public Festivo() {
-        
-    }
-
-    // Constructor con parámetros
-    public Festivo(String nombre, int dia, int mes, int diasPascua, Tipo tipo) {
-        this.nombre = nombre;
-        this.dia = dia;
-        this.mes = mes;
-        this.diasPascua = diasPascua;
-        this.tipo = tipo;
-    }
-
-    // Getters y setters
     public Long getId() {
         return id;
     }
@@ -50,6 +29,7 @@ public class Festivo {
         this.id = id;
     }
 
+    @Column(name = "Nombre")
     public String getNombre() {
         return nombre;
     }
@@ -58,6 +38,7 @@ public class Festivo {
         this.nombre = nombre;
     }
 
+    @Column(name = "Dia")
     public int getDia() {
         return dia;
     }
@@ -66,6 +47,7 @@ public class Festivo {
         this.dia = dia;
     }
 
+    @Column(name = "Mes")
     public int getMes() {
         return mes;
     }
@@ -74,6 +56,7 @@ public class Festivo {
         this.mes = mes;
     }
 
+    @Column(name = "DiasPascua")
     public int getDiasPascua() {
         return diasPascua;
     }
@@ -82,6 +65,9 @@ public class Festivo {
         this.diasPascua = diasPascua;
     }
 
+    //relacion
+    @ManyToOne
+    @JoinColumn(name = "IdTipo", referencedColumnName = "Id")
     public Tipo getTipo() {
         return tipo;
     }
@@ -90,7 +76,6 @@ public class Festivo {
         this.tipo = tipo;
     }
 
-    // Método toString para obtener una representación legible del objeto
     @Override
     public String toString() {
         return "Festivo{" +
@@ -103,3 +88,4 @@ public class Festivo {
                '}';
     }
 }
+
